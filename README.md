@@ -1,41 +1,89 @@
-<h2>Digital Innovation: Expert class - Desenvolvimento de testes unitários para validar uma API REST de gerenciamento de estoques de cerveja.</h2>
+# 🍺 Beerstock - API REST de Gerenciamento de Estoque de Cervejas
 
-Nesta live coding, vamos aprender a testar, unitariamente, uma API REST para o gerenciamento de estoques de cerveja. Vamos desenvolver testes unitários para validar o nosso sistema de gerenciamento de estoques de cerveja, e também apresentar os principais conceitos e vantagens de criar testes unitários com JUnit e Mockito. Além disso, vamos também mostrar como desenvolver funcionalidades da nossa API através da prática do TDD.
+[![Status do Projeto](https://img.shields.io/badge/Status-Concluído-brightgreen)](https://github.com/AlsS99/beer_api_digital_innovation_one.git)
+[![Tecnologias](https://img.shields.io/badge/Stack-Java%20|%20Spring%20Boot%20|%20Maven-blue)](https://www.java.com/)
 
-Durante a sessão, serão abordados os seguintes tópicos:
+---
 
-* Baixar um projeto através do Git para desenolver nossos testes unitários. 
-* Apresentação conceitual sobre testes: a pirâmide dos tipos de testes, e também a importância de cada tipo de teste durante o ciclo de desenvolvimento.
-* Foco nos testes unitários: mostrar o porque é importante o desenvolvimento destes tipos de testes como parte do ciclo de desenvolvimento de software.
-* Principais frameworks para testes unitários em Java: JUnit, Mockito e Hamcrest. 
-* Desenvolvimento de testes unitários para validação de funcionalides básicas: criação, listagem, consulta por nome e exclusão de cervejas.
-* TDD: apresentação e exemplo prático em 2 funcionaliades importantes: incremento e decremento do número de cervejas no estoque.
+## 🎯 Sobre o Projeto
 
-Para executar o projeto no terminal, digite o seguinte comando:
+Este projeto consiste em uma **API REST** para o gerenciamento de estoques de cerveja. A aplicação permite realizar operações de **CRUD** (Criar, Listar, Consultar por Nome e Excluir) e, principalmente, controlar o **fluxo de estoque** de cada cerveja.
 
-```shell script
-mvn spring-boot:run 
-```
+Este repositório foi desenvolvido como parte de um desafio da **Digital Innovation One (Expert Class)**, com foco em demonstrar proficiência em testes e desenvolvimento orientado a testes (TDD).
 
-Para executar a suíte de testes desenvolvida durante a live coding, basta executar o seguinte comando:
+## 🛠️ Tecnologias Utilizadas
 
-```shell script
-mvn clean test
-```
+* **Linguagem:** Java 14+
+* **Framework:** Spring Boot 2.x
+* **Persistência:** Spring Data JPA
+* **Banco de Dados:** H2 (Em Memória, para testes)
+* **Construção:** Maven
 
-Após executar o comando acima, basta apenas abrir o seguinte endereço e visualizar a execução do projeto:
+---
 
-```
-http://localhost:8080/api/v1/beers
-```
+## 🧪 Testes e Metodologias
 
-São necessários os seguintes pré-requisitos para a execução do projeto desenvolvido durante a aula:
+O foco principal deste projeto foi a garantia da qualidade e a aplicação de boas práticas de desenvolvimento.
 
-* Java 14 ou versões superiores.
-* Maven 3.6.3 ou versões superiores.
-* Intellj IDEA Community Edition ou sua IDE favorita.
-* Controle de versão GIT instalado na sua máquina.
-* Muita vontade de aprender e compartilhar conhecimento :)
+### 1. Test-Driven Development (TDD)
+
+As funcionalidades de controle de estoque foram desenvolvidas utilizando a prática do **TDD**, onde os testes foram escritos *antes* do código de produção.
+
+* **Funcionalidades TDD:**
+    * **Incremento de Estoque:** Valida se é possível adicionar cervejas ao estoque, respeitando o limite máximo (`max`).
+    * **Decremento de Estoque:** Valida se é possível remover cervejas do estoque, prevenindo que a quantidade seja negativa (estoque < 0).
+
+### 2. Cobertura de Testes
+
+O projeto possui uma **cobertura robusta de testes** em todas as camadas, garantindo o funcionamento do sistema de ponta a ponta.
+
+* **Testes Unitários (JUnit e Mockito):** Focados em isolar e validar a lógica de negócios nas camadas **`Service`** e **`Controller`**, utilizando mocks para simular dependências.
+* **Testes de Integração (`@DataJpaTest` e `@SpringBootTest`):** Focados em validar a comunicação entre as camadas:
+    * `BeerRepositoryTest`: Testa a camada de persistência (JPA e H2).
+    * `BeerIntegrationTest`: Testa o fluxo completo da API (Controller -> Service -> Repository).
+
+---
+
+## 🚀 Como Executar
+
+Para rodar a aplicação e os testes, siga os passos abaixo:
+
+### Pré-requisitos
+* Java 14 ou superior
+* Maven 3.6.3 ou superior
+* Git
+
+### Passos
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git](https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git)
+    cd SEU_REPOSITORIO
+    ```
+
+2.  **Executar a Suíte de Testes (Recomendado):**
+    ```bash
+    mvn clean test
+    ```
+
+3.  **Executar a Aplicação:**
+    ```bash
+    mvn spring-boot:run
+    ```
+
+A API estará disponível em: `http://localhost:8080/api/v1/beers`
+
+---
+
+## 🔗 Endpoints Principais
+
+| Método | Endpoint | Descrição |
+| :--- | :--- | :--- |
+| `POST` | `/api/v1/beers` | Cria um novo registro de cerveja. |
+| `GET` | `/api/v1/beers/{name}` | Busca uma cerveja pelo nome. |
+| `GET` | `/api/v1/beers` | Lista todas as cervejas registradas. |
+| `DELETE`| `/api/v1/beers/{id}` | Exclui uma cerveja pelo ID. |
+| `PATCH`| `/api/v1/beers/{id}/increment` | Incrementa o estoque. |
+| `PATCH`| `/api/v1/beers/{id}/decrement` | Decrementa o estoque. |
 
 Abaixo, seguem links bem bacanas, sobre tópicos mencionados durante a aula:
 
