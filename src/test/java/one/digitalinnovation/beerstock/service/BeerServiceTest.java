@@ -203,7 +203,7 @@ public class BeerServiceTest {
         assertThrows(BeerNotFoundException.class, () -> beerService.increment(INVALID_BEER_ID, quantityToIncrement));
     }
 
-/*    @Test
+    @Test
     void whenDecrementIsCalledThenDecrementBeerStock() throws BeerNotFoundException, BeerStockExceededException {
         BeerDTO expectedBeerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
         Beer expectedBeer = beerMapper.toModel(expectedBeerDTO);
@@ -253,5 +253,5 @@ public class BeerServiceTest {
         when(beerRepository.findById(INVALID_BEER_ID)).thenReturn(Optional.empty());
 
         assertThrows(BeerNotFoundException.class, () -> beerService.decrement(INVALID_BEER_ID, quantityToDecrement));
-    }*/
+    }
 }
